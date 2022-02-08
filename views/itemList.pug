@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+
+  
+  
+  div.container
+    div.row 
+      each category in categories
+        div.col  
+          a(href=category.category.url) #{category.category.name.toUpperCase()}
+          hr
+          dl 
+            each item in category.items 
+              dt
+                a(href=item.url) !{item.name}
+              dd $!{item.price}
+            
+            else 
+              p This category has no items.
+      else
+        p There are no categories.

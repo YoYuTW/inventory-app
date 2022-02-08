@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  h1 #{item.name.toUpperCase()}
+  h4 $ #{item.price}
+  p #{item.description}
+
+  h3 Each branch has following number in stock:
+  ul          
+    each item in itemNumberInBranch
+      li 
+        dl
+          dt Branch: !{item.name}
+          dd In stock: !{item.number}
+
+  hr
+  p
+    a(href=item.url+'/update') Update item
+  p
+    a(href=item.url+'/delete') Delete item
+    
+

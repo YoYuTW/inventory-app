@@ -1,0 +1,26 @@
+extend layout 
+
+block content 
+  h1=title 
+  h2 !{branch.name}
+  form(method='POST' action='')
+    .container-fluid    
+      .row.justify-content-start 
+        each category in inStock
+          .col  
+            h6 #{category.category.name.toUpperCase()}
+            hr 
+            each item in category.items 
+              .form-group
+                label(for=item._id)
+                  a(href=item.url) !{item.name} 
+                input.form-control(id=item._id type=number min=0 name=item._id required=true value=(item.numberInStock ? item.numberInStock : 0))
+
+            else 
+              p This category has no items.
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

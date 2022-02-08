@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 #{title}: #{branch.name}
+  p Do you really want to delete this branch?
+
+  form(method='POST' action='')
+    div.form-group
+      input#branchid.form-control(type='hidden',name='branchid', required='true', value=branch._id )
+
+    button.btn.btn-primary(type='submit') Delete

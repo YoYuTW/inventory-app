@@ -1,0 +1,37 @@
+extends layout
+
+block content
+
+  h1 #{branch.name.toUpperCase()}
+  p 
+    | address: #{branch.address} <br>
+    | email: <a href='mailto:#{branch.email}'>#{branch.email}</a> <br>
+    | tel: #{branch.telephone}
+  h4 Items
+  div.container-fluid    
+    div.row.justify-content-start 
+      each category in inStock
+        div.col  
+          h6 #{category.category.name.toUpperCase()}
+          hr
+          dl 
+            each item in category.items 
+              dt
+                a(href=item.url) !{item.name}
+              if item.numberInStock === 0
+                dd.text-danger In Stock: 0
+              else 
+                dd In Stock: !{item.numberInStock}
+            
+            else 
+              p This category has no items.
+      else
+        p There are no categories.
+
+  hr
+  p 
+    a(href=branch.url+'/inventory') Manage inventory
+  p
+    a(href=branch.url+'/update') Update branch
+  p
+    a(href=branch.url+'/delete') Delete branch

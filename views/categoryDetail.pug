@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  h1 #{category.name.toUpperCase()}
+  p #{category.description}
+  h4 Items
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    
+
+    dl
+      each item in items
+        dt
+          a(href=item.url) #{item.name}
+        dd 
+          p $ #{item.price}
+          p #{item.description}
+
+
+      else
+        p This category has no items.
+
+  hr
+  p
+    a(href=category.url+'/update') Update Category
+  p
+    a(href=category.url+'/delete') Delete Category 

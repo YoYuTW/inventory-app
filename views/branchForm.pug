@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='branchName') Name:
+      input#branchName.form-control(type='text' placeholder='branch name(NeiHu, Taichung)' name='branchName' required='true' value=(undefined===branch ? '' : branch.name))
+    div.form-group
+      label(for='address') Address:
+      input#address.form-control(type='text' placeholder='address' name='address' required='true' value=(undefined===branch ? '' : branch.address))
+    div.form-group
+      label(for='email') Email:
+      input#email.form-control(type='email' placeholder='email' name='email' required='true' value=(undefined===branch ? '' : branch.email))
+    div.form-group
+      label(for='telephone') Telephone:
+      input#telephone.form-control(type='tel' placeholder='telephone' name='telephone' required='true' value=(undefined===branch ? '' : branch.telephone))    
+    button.btn.btn-primary(type='submit') Submit
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
