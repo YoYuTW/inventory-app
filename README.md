@@ -32,3 +32,5 @@ I-KE-A，一間不一定是瑞典來的公司庫存管理系統。
 
 商品詳細資訊
 ![item detail](./demo/item-detail.png)
+
+* 2022.02.09 新增 dotenv
